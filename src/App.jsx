@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const skills = {
     languages: ["Java", "C++", "Python", "PHP", "Dart"],
     mobile: ["Android Development", "Flutter"],
@@ -84,12 +87,35 @@ function App() {
           GTR<span>.</span>
         </a>
 
-        <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? "×" : "☰"}
+        </button>
+
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>
+            About
+          </a>
+
+          <a href="#experience" onClick={() => setMenuOpen(false)}>
+            Experience
+          </a>
+
+          <a href="#projects" onClick={() => setMenuOpen(false)}>
+            Projects
+          </a>
+
+          <a href="#skills" onClick={() => setMenuOpen(false)}>
+            Skills
+          </a>
+
+          <a href="#contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
         </div>
       </nav>
 
